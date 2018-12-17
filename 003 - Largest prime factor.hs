@@ -2,10 +2,10 @@ module Main where
 
 main :: IO ()
 main = print . uncurry max $ foldl (
-  \(res, n) f -> 
+  \(m, n) f -> 
     if n `mod` f == 0 
       then (f, until (\x -> x `mod` f > 0) (`quot` f) n)
-      else (res, n)
+      else (m, n)
   ) (1, 600851475143) [2..ceiling (sqrt 600851475143)]
 
 {-
