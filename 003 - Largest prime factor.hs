@@ -1,7 +1,7 @@
 module Main where
 
 main :: IO ()
-main = print . fst $ foldl (
+main = print . uncurry max $ foldl (
   \(res, n) f -> 
     if n `mod` f == 0 
       then (f, until (\x -> x `mod` f > 0) (`quot` f) n)
