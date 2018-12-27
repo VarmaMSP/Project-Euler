@@ -1,5 +1,7 @@
 module Utils (
-  primeFactors
+  isPrime,
+  primeFactors,
+  primes
 ) where
 
 primeFactors :: Int -> [(Int, Int)]
@@ -14,3 +16,10 @@ primeFactors m =
     divide a b = case a `divMod` b of
       (q, 0) -> uncurry (\u v -> (u, v + 1)) $ divide q b
       _      -> (a, 0)
+
+primes :: [Int]
+primes = f [2..]
+  where f (p:xs) = p : f [ x | x <- xs, x `mod` p > 0 ]
+
+isPrime :: Int -> Bool
+isPrime n = (length . primeFactors $ n) == 1

@@ -1,10 +1,9 @@
 module Main where
 
-seive :: [Int] -> [Int]
-seive (p : xs) = p : seive [ x | x <- xs, x < p ^ 2 || x `mod` p > 0 ]
+import Utils (primes)
 
 main :: IO () 
-main = print $ seive [2..] !! 10000
+main = print $ primes !! 10000
 
 {-
 Author: bumpy (-_-)
