@@ -11,7 +11,6 @@ main =
           , let j = d !! (i-1)
           , j <= 10000 && j /= i && d !! (j-1) == i ]
   where
-    divisorSum :: Int -> Int
     divisorSum a = subtract a
                  . product
                  . map (\(p, n) -> (p ^ (n+1) - 1) `div` (p-1))
