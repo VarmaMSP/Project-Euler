@@ -1,25 +1,22 @@
 module Main where
 
-import qualified Data.Map.Strict as Map
-import           Data.Map.Strict ((!))
+import Utils (primeFactors)
 
 main :: IO ()
-main =
-  let d = Map.fromList $ f (zip [1..10000] (repeat 0))
+main = 
+  let d = [ divisorSum x | x <- [1..10000]]
   in print
-    . sum
-    $ [i | i <- [2..10000]
-         , let j = d ! i
-         , j <= 10000 && j /= i && d ! j == i]
-  where f []            = []
-        f ((n, m) : xs) = 
-          (n, m) : f (
-            uncurry (
-              \a b -> if a `mod` n == 0
-                then (a, b + n)
-                else (a, b)
-            ) <$> xs
-          )
+    . sum 
+    $ [ i | i <- [2..10000]
+          , let j = d !! (i-1)
+          , j <= 10000 && j /= i && d !! (j-1) == i ]
+  where
+    divisorSum :: Int -> Int
+    divisorSum a = subtract a
+                 . product
+                 . map (\(p, n) -> (p ^ (n+1) - 1) `div` (p-1))
+                 . primeFactors
+                 $ a
 
 {-
 Author: bumpy (-_-)

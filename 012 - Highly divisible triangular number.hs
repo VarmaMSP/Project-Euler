@@ -1,17 +1,6 @@
 module Main where
 
-factors :: Int -> [(Int, Int)]
-factors m = 
-  let (fs, x) = foldl (
-        \(f, n) p -> if n `mod` p == 0
-          then let (c, n') = divide n p in ((p, c) : f, n') -- n / (p ^ c) = n'
-          else (f, n)
-        ) ([], m) [2..ceiling . sqrt . fromIntegral $ m]
-  in fs ++ [(x, 1) | x > 1]
-  where
-    divide a b = case a `divMod` b of
-      (q, 0) -> uncurry (\u v -> (u + 1, v)) $ divide q b
-      _      -> (0, a)
+import Utils (primeFactors)
 
 main :: IO ()
 main = print
@@ -23,7 +12,7 @@ main = print
       )
      $ [1..]
   where 
-    divisors = product . map ((+1) . snd) . factors
+    divisors = product . map ((+1) . snd) . primeFactors
     nthTriangle n = (n * (n + 1)) `div` 2
 
 {-
