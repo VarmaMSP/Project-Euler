@@ -22,8 +22,7 @@ grid =
 main :: IO ()
 main = print
      . head
-     . foldl1 (\x y -> zipWith (+) (f x) y)
-     . reverse
+     . foldr1 (\x y -> zipWith (+) x (f y))
      $ grid
   where
     f (x:y:xs) = max x y : f (y : xs)
