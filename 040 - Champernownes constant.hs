@@ -1,21 +1,18 @@
 module Main where
   
 import Data.Char (digitToInt)
-import Data.List (intercalate)
 
 main :: IO ()
 main = print 
-     $ digitToInt (d !! 0)
-     * digitToInt (d !! 9)
-     * digitToInt (d !! 99)
-     * digitToInt (d !! 999)
-     * digitToInt (d !! 9999)
-     * digitToInt (d !! 99999)
-     * digitToInt (d !! 999999)
+     $ digitToInt (d !! 1)
+     * digitToInt (d !! 10)
+     * digitToInt (d !! 100)
+     * digitToInt (d !! 1000)
+     * digitToInt (d !! 10000)
+     * digitToInt (d !! 100000)
+     * digitToInt (d !! 1000000)
   where 
-    d = intercalate "" 
-      . map show
-      $ [1..]
+    d = concatMap show [0..]
 
 {-
 Author: bumpy (-_-)
