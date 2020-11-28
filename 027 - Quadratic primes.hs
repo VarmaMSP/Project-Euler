@@ -2,7 +2,7 @@ module Main where
 
 import Data.List (maximumBy)
 import Data.Ord (comparing)
-import Utils (isPrime, primes, primeFactors)
+import Utils (isPrime, primes)
 
 main :: IO ()
 main = print

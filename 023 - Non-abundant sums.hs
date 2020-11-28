@@ -11,8 +11,10 @@ main = print
                , y <- abundant
                , x + y <= 28123 ]
   where
+    abundant :: [Int]
     abundant = [ x | x <- [1..28123], divisorSum x > x ]
     
+    divisorSum :: Int -> Int
     divisorSum a = subtract a
                  . product 
                  . map (\(p, n) -> (p ^ (n+1) - 1) `div` (p-1))

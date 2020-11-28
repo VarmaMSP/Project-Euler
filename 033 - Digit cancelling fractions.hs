@@ -2,7 +2,7 @@ module Main where
 
 main :: IO ()
 main = print
-     . uncurry (\p q -> q `div` gcd p q)
+     . (\(p, q) -> q `div` gcd p q)
      . foldl1 (\(p, q) (r, s) -> (p * r, q * s))
      $ [ (m, n) | a <- [1..9], b <- [1..9], c <- [1..9]
                 , let m = 10 * a + c 

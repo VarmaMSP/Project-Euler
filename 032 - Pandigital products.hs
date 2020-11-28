@@ -10,7 +10,7 @@ main = print
      $ [ toInt . drop 5 $ x | x <- permutations [1..9]
                             , okay x ]
   where
-    okay (a:b:c:d:e:f:g:h:i:xs) =
+    okay (a:b:c:d:e:f:g:h:i:_) =
       let p = toInt [f, g, h, i]
       in toInt [a, b, c] * toInt [d, e] == p || 
          toInt [a, b] * toInt [c, d, e] == p || 

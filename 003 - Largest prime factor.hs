@@ -8,7 +8,7 @@ main = print
      . head
      . primeFactors
      $ 600851475143
-
+  
 {-
 Author: bumpy (-_-)
 date: 17-Dec-2018

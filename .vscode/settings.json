@@ -1,0 +1,18 @@
+{
+  "editor.fontSize": 13,
+  "editor.insertSpaces": false,
+  "editor.formatOnSave": false,
+  "editor.minimap.enabled": false,
+  "editor.detectIndentation": false,
+  "workbench.colorTheme": "Blink (rainglow)",
+  "workbench.editor.enablePreview": false,
+  "files.insertFinalNewline": true,
+
+  "haskell.hlint.run": "onType",
+
+  "[haskell]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.formatOnSave": false
+  }
+}
