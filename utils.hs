@@ -1,8 +1,20 @@
-module Utils (
-  isPrime,
-  primeFactors,
-  primes
-) where
+module Utils where
+
+primes :: [Int]
+primes = sieve [2..]
+  where
+    sieve :: [Int] -> [Int]
+    sieve (p:xs) = p : sieve [ x | x <- xs, x `mod` p /= 0 ]
+
+isPrime :: Int -> Bool
+isPrime n = length (primeFactors n) == 1
+
+divisorSum :: Int -> Int
+divisorSum n = subtract n
+             . product 
+             . map (\(p, n) -> (p ^ (n + 1) - 1) `div` (p - 1))
+             . primeFactors
+             $ n
 
 primeFactors :: Int -> [(Int, Int)]
 primeFactors m = 
@@ -16,11 +28,3 @@ primeFactors m =
     divide a b = case a `divMod` b of
       (q, 0) -> (\(u, v) -> (u, v + 1)) $ divide q b
       _      -> (a, 0)
-
-primes :: [Int]
-primes = f [2..]
-  where f (p:xs) = p : f [ x | x <- xs, x `mod` p /= 0 ]
-
-
-isPrime :: Int -> Bool
-isPrime n = (length . primeFactors $ n) == 1

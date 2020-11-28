@@ -7,12 +7,15 @@ main = print
      . nthTriangle
      . head
      . filter (\x -> if even x 
-        then divisors (x `div` 2) * divisors (x + 1) > 500
-        else divisors x * divisors ((x + 1) `div` 2) > 500
+        then divisorCount (x `div` 2) * divisorCount (x + 1) > 500
+        else divisorCount x * divisorCount ((x + 1) `div` 2) > 500
       )
      $ [1..]
-  where 
-    divisors = product . map ((+1) . snd) . primeFactors
+  where
+    divisorCount :: Int -> Int
+    divisorCount = product . map ((+1) . snd) . primeFactors
+
+    nthTriangle :: Int -> Int
     nthTriangle n = (n * (n + 1)) `div` 2
 
 {-

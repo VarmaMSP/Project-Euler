@@ -6,12 +6,14 @@ main = print
      $ primesUpto 2000000
 
 primesUpto :: Int -> [Int]
-primesUpto m = seive [2..m]
+primesUpto m = sieve [2..m]
   where
-    seive n@(p:xs)
-      | p <= m'   = p : seive [ x | x <- xs, x `mod` p /= 0 ]
+    sieve :: [Int] -> [Int]
+    sieve n@(p:xs)
+      | p <= m'   = p : sieve [ x | x <- xs, x `mod` p /= 0 ]
       | otherwise = n
 
+    m' :: Int
     m' = ceiling . sqrt . fromIntegral $ m
 
 {-

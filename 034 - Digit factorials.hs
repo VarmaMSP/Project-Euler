@@ -8,10 +8,12 @@ main = print
      $ [ x | x <- [3..362880]
            , digitSum x == x ]
   where 
+    digitSum :: Int -> Int
     digitSum = sum 
              . map (fact . digitToInt)
              . show
     
+    fact :: Int -> Int
     fact n = product [1..n]
 
 {-

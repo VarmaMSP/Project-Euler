@@ -6,8 +6,7 @@ main :: IO ()
 main = print
      . length
      . Set.fromList
-     $ [ a ^ b | a <- [2..100]
-               , b <- [2..100] ]
+     $ [ a ^ b | a <- [2..100], b <- [2..100] ]
 
 {-
 Author: bumpy (-_-)

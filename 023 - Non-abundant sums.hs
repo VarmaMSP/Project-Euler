@@ -1,7 +1,7 @@
 module Main where 
 
 import qualified Data.Set as Set
-import           Utils (primeFactors)
+import           Utils (divisorSum)
 
 main :: IO ()
 main = print
@@ -14,12 +14,6 @@ main = print
     abundant :: [Int]
     abundant = [ x | x <- [1..28123], divisorSum x > x ]
     
-    divisorSum :: Int -> Int
-    divisorSum a = subtract a
-                 . product 
-                 . map (\(p, n) -> (p ^ (n+1) - 1) `div` (p-1))
-                 . primeFactors
-                 $ a
 
 {-
 Author: bumpy (-_-)

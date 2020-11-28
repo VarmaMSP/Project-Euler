@@ -12,6 +12,7 @@ main = print
      * digitToInt (d !! 100000)
      * digitToInt (d !! 1000000)
   where 
+    d :: String
     d = concatMap show [0..]
 
 {-

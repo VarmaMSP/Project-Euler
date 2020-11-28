@@ -1,23 +1,17 @@
 module Main where
 
-import Utils (primeFactors)
+import Utils as U ( divisorSum ) 
 
 main :: IO ()
 main = print
      . sum 
      $ [ i | i <- [2..10000]
-           , let j = sum' i - 1
-           , j <= 10000 && j /= i && sum' j - 1 == i ]
+           , let j = divisorSum i - 1
+           , j /= i && j <= 10000 && divisorSum j - 1 == i ]
   where
-    sum' :: Int -> Int
-    sum' = (!!) (divisorSum <$> [1..10000]) 
-
     divisorSum :: Int -> Int
-    divisorSum a = subtract a
-                 . product
-                 . map (\(p, n) -> (p ^ (n+1) - 1) `div` (p - 1))
-                 . primeFactors
-                 $ a
+    divisorSum = (!!) (U.divisorSum <$> [1..10000])
+
 
 {-
 Author: bumpy (-_-)

@@ -7,21 +7,22 @@ main = print
      $ [ (m, n) | a <- [1..9], b <- [1..9], c <- [1..9]
                 , let m = 10 * a + c 
                 , let n = 10 * b + c
-                , m < n && okay m n a b ]
-    ++ [ (m, n) | a <- [1..9], b <- [1..9], c <- [1..9]
+                , m < n && isValid m n a b ]
+    <> [ (m, n) | a <- [1..9], b <- [1..9], c <- [1..9]
                 , let m = 10 * c + a 
                 , let n = 10 * c + b
-                , m < n && okay m n a b ]
-    ++ [ (m, n) | a <- [1..9], b <- [1..9], c <- [1..9]
+                , m < n && isValid m n a b ]
+    <> [ (m, n) | a <- [1..9], b <- [1..9], c <- [1..9]
                 , let m = 10 * c + a
                 , let n = 10 * b + c
-                , m < n && okay m n a b ]
-    ++ [ (m, n) | a <- [1..9], b <- [1..9], c <- [1..9]
+                , m < n && isValid m n a b ]
+    <> [ (m, n) | a <- [1..9], b <- [1..9], c <- [1..9]
                 , let m = 10 * a + c
                 , let n = 10 * c + b
-                , m < n && okay m n a b ]
+                , m < n && isValid m n a b ]
   where
-    okay m n a b = 
+    isValid :: Int -> Int -> Int -> Int -> Bool
+    isValid m n a b = 
       let p = gcd m n 
           q = gcd a b 
       in (m `div` p) == (a `div` q) && 

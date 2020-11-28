@@ -2,9 +2,7 @@ module Main where
 
 main :: IO () 
 main = print 
-     . (`mod`10000000000)
-     . sum
-     $ [ x ^ x | x <- [1..1000] ]
+     $ sum [ x ^ x | x <- [1..1000] ] `mod` 10000000000
 
 {-
 Author: bumpy (-_-)

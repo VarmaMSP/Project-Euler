@@ -25,6 +25,7 @@ main = print
      . foldr1 (\x y -> zipWith (+) x (f y))
      $ grid
   where
+    f :: [Int] -> [Int]
     f (x:y:xs) = max x y : f (y : xs)
     f xs       = xs
 

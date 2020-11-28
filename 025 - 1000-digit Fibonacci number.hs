@@ -3,9 +3,8 @@ module Main where
 main :: IO ()
 main = print
      . head
-     . filter ((>=1000) . snd)
-     . zip [1..] 
-     $ [ length . show . fst $ x | x <- iterate (\(a, b) -> (b, a + b)) (1, 1) ]
+     $ [ i | (i, (fib, _)) <- zip [1..] (iterate (\(a, b) -> (b, a + b)) (1, 1))
+           , length (show fib) >= 1000 ]
 
 {-
 Author: bumpy (-_-)

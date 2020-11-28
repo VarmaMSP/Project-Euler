@@ -1,11 +1,10 @@
 module Main where
 
+import Utils (primes)
+
 main :: IO () 
-main = print
-     $ sieve [2..] !! 10000
-  where
-    sieve :: [Int] -> [Int]
-    sieve (p:xs) = p : sieve [ x | x <- xs, x `mod` p /= 0 ] 
+main = print 
+     $ primes !! 10000
       
 {-
 Author: bumpy (-_-)

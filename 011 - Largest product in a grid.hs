@@ -29,24 +29,31 @@ main = print
      . maximum
      $ [ maximum [ horizontal i j, vertical i j, crossRight i j, crossLeft i j ] | i <- [0..19], j <- [0..19] ]
   where
+    horizontal :: Int -> Int -> Int
     horizontal x y
       | x > 16 || y > 16 = 0
       | otherwise        = grid !! x !! y
                          * grid !! x !! (y + 1)
                          * grid !! x !! (y + 2)
                          * grid !! x !! (y + 3)
+
+    vertical :: Int -> Int -> Int
     vertical x y
       | x > 16 || y > 16 = 0 
       | otherwise        = grid !! x !! y
                          * grid !! (x + 1) !! y
                          * grid !! (x + 2) !! y
                          * grid !! (x + 3) !! y
+
+    crossRight :: Int -> Int -> Int
     crossRight x y
       | x > 16 || y > 16 = 0
       | otherwise        = grid !! x !! y
                          * grid !! (x + 1) !! (y + 1)
                          * grid !! (x + 2) !! (y + 2)
                          * grid !! (x + 3) !! (y + 3)
+    
+    crossLeft :: Int -> Int -> Int
     crossLeft x y
       | x > 16 || y < 3 = 0
       | otherwise       = grid !! x !! y
