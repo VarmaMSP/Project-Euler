@@ -5,15 +5,17 @@ import           Utils (divisorSum)
 
 main :: IO ()
 main = print
-     . (\s -> sum [1..28123] - sum s)
+     . (\s -> sum [1..n] - sum s)
      . Set.fromList
      $ [ x + y | x <- abundant
                , y <- abundant
-               , x + y <= 28123 ]
+               , x + y <= n ]
   where
     abundant :: [Int]
-    abundant = [ x | x <- [1..28123], divisorSum x > x ]
-    
+    abundant = [ x | x <- [1..n], divisorSum x > x ]
+
+    n :: Int 
+    n = 28123
 
 {-
 Author: bumpy (-_-)
