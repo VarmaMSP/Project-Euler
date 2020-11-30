@@ -32,4 +32,3 @@ primeFactors m =
 
     m' :: Int
     m' = ceiling . sqrt . fromIntegral $ m
-   
